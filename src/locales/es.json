@@ -1,0 +1,13 @@
+{
+    "main": {
+        "slogan": "Pagina principal de cursos"
+    },
+    "login": {
+        "slogan": "Registrate para acceder a los cursos",
+        "form": {
+            "user": "Usuario o E-mail",
+            "pass": "Contraseña",
+            "ok": "Ingresar"
+        }
+    }
+}

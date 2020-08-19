@@ -1,6 +1,6 @@
 {
-    "main": {
-        "slogan": "Pagina principal de cursos"
+    "home": {
+        "title": "Bienvenidos"
     },
     "login": {
         "slogan": "Registrate para acceder a los cursos",

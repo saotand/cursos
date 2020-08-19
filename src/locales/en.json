@@ -1,3 +1,13 @@
 {
-    "message": "Welcome!"
+    "home": {
+        "title": "Bienvenidos"
+    },
+    "login": {
+        "slogan": "Registrate para acceder a los cursos",
+        "form": {
+            "user": "Usuario o E-mail",
+            "pass": "Contraseña",
+            "ok": "Ingresar"
+        }
+    }
 }

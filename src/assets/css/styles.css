@@ -1,4 +1,51 @@
-.mainappbar {
-    color: blue;
-    background-color: red;
+html {
+  --scrollbarBG: #272727;
+  --thumbBG: #1e74c4;
+  font-family: sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+
+/* Transitions */
+
+.box {
+  margin: 3rem auto;
+  max-width: 40rem;
+  box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+  padding: 2rem;
+}
+
+.box-fade-enter,
+.box-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.box-fade-enter-active,
+.box-fade-leave-active {
+  transition: all 0, 3s ease;
+}
+
+.box-fade-enter-to,
+.box-fade-leave {
+  opacity: 1;
+  transform: translateY(0);
 }

@@ -1,91 +1,81 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import i18n from '../i18n';
+import i18n from '@/plugins/i18n'
+
+// Paginas
+import Home from '@/views/home.vue'
+import Signin from '@/views/signin.vue'
+import Signup from '@/views/signup.vue'
+import Training from '@/views/training.vue'
+import About from '@/views/about.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-    {
+  {
+    path: '/',
+    redirect: `/${i18n.locale}/`
+  },
+  {
+    path: '/:lang',
+    component: {
+      render (c) { return c('router-view') }
+    },
+    children: [
+      /*
+            {
+              path: '/',
+              redirect: '/'
+            },
+      */
+      {
         path: '/',
-        redirect: `/${i18n.locale}/home`
-    },
-    {
-        'path': '/:lang',
-        component: {
-            render (c) { return c('router-view'); }
-        },
-        'children': [
-            {
-                path: '/',
-                redirect: 'home'
-            },
-            {
-                path: 'home',
-                name: 'home',
-                component: Home,
-                meta: {
-                    title: i18n.messages[i18n.locale].home.title
-                }
-            },
-            {
-                path: 'about',
-                name: 'about',
-                component: Home,
-                meta: {
-                    title: 'Registrate'
-                }
-            },
-
-            {
-                path: '/about',
-                name: 'About',
-                // route level code-splitting
-                // this generates a separate chunk (about.[hash].js) for this route
-                // which is lazy-loaded when the route is visited.
-                component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-            }
-            /*
-            {
-                path: 'system',
-                redirect: {
-                    name: 'dashboard'
-                },
-                component: System,
-                children: [{
-                    path: 'dashboard',
-                    name: 'dashboard',
-                    component: Dashboard,
-                    meta: {
-                        title: 'Resumen'
-                    }
-                },
-                {
-                    path: 'users',
-                    name: 'users',
-                    component: Users,
-                    meta: {
-                        title: 'Usuarios'
-                    }
-                }
-                ]
-            }*/
-        ]
-    },
-
-];
+        name: 'home',
+        component: Home,
+        meta: {
+          title: 'Inicio'
+        }
+      },
+      {
+        path: 'signin',
+        name: 'signin',
+        component: Signin,
+        meta: {
+          title: 'Inicio'
+        }
+      },
+      {
+        path: 'signup',
+        name: 'signup',
+        component: Signup,
+        meta: {
+          title: 'Inicio'
+        }
+      },
+      {
+        path: 'training',
+        name: 'training',
+        component: Training,
+        meta: {
+          title: 'Training'
+        }
+      },
+      {
+        path: 'about',
+        name: 'about',
+        component: About,
+        meta: {
+          title: 'Resumen'
+        }
+      }
+    ]
+  }
+]
 
 const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
 })
 
-
-
-
-
-
-
 export default router
-

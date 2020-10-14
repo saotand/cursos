@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container
+    class="fill-height"
+    fluid
+    style="border:1px solid #fff"
+  >
+    <v-row
+      align="center"
+      justify="center"
+      style="border: 1px solid #00F"
+    >
+      <v-col
+        class=""
+        style="border: 1px solid #0FF"
+      >
+        Inicio
+        <app-pass-str v-model="passwordds"></app-pass-str>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+  data: () => ({
+    passwordds: 'A56b12a.'
+  })
 }
 </script>

@@ -1,5 +1,7 @@
 <template>
-	<span>Signin Page</span>
+  <v-window>
+    <slot></slot>
+  </v-window>
 </template>
 
 <script>

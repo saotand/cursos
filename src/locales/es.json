@@ -1,4 +1,12 @@
 {
+    "menu": {
+        "home": "Inicio",
+        "signin": "Ingresa",
+        "signup": "Registrate",
+        "dashboard": "Mi Panel",
+        "records": "Mis cursos",
+        "training": "Entrenamiento"
+    },
     "home": {
         "title": "Bienvenidos"
     },

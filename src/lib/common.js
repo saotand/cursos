@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
-import jwt from 'jsonwebtoken';
 
+import jwt from 'jsonwebtoken';
+//import axios from 'axios'
 export default {
     // Nombre del Token
     token: 'token',
@@ -49,12 +50,28 @@ export default {
     },
     // Formato Correo Eletrónico
     formatEmail (email) {
-        let regexemail = /^[a-zA-Z0-9!#$&*?^{}˜.Çç-]+(\.[a-zA-Z0-9!#$&*?^{}˜.Çç-]+)*@([a-zA-Z0-9]+([a-zA-Z0-9-]*)\.)+[a-zA-Z]+$/;
+        const regexemail = /^[a-zA-Z0-9!#$&*?^{}˜.Çç-]+(\.[a-zA-Z0-9!#$&*?^{}˜.Çç-]+)*@([a-zA-Z0-9]+([a-zA-Z0-9-]*)\.)+[a-zA-Z]+$/;
         let validemail = false;
         if (email != undefined) {
             validemail = email.match(regexemail) ? true : false;
         }
         return validemail;
+    },
+    // Devuelve un numero segun el nivel de seguridad de una contraseña 0=nula, 1=media, 2=alta
+    passStrength (pass) {
+        if (pass) {
+            let strongregex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*.-])(?=.{8,})");
+            let mediumregex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+            if (strongregex.test(pass)) { return 2 }
+            else if (mediumregex.test(pass)) { return 1 }
+            else { return 0 }
+        } else { return false }
+    },
+    arraymeter (array, value = false, def = false) {
+        if (value !== false) {
+            return array[value]
+        }
+        return def
     },
     // Obtiene los datos de repuesta de una peticion Axios
     getdata (response) {
@@ -63,8 +80,15 @@ export default {
             if (response.data != undefined) {
                 if (response.data.data != undefined) {
                     data = response.data.data;
+                } else {
+                    return false
                 }
+            } else {
+                return response.data
             }
+
+        } else {
+            return false;
         }
         return data;
     },
